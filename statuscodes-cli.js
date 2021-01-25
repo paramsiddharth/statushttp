@@ -11,10 +11,10 @@ if (require && require.main === module) {
 ${chalk.yellowBright('HTTP Status Codes (statuscodes)')}
 Gives details about HTTP status codes/messages.
 
-Usage: $0 <value> [options]`)
-		.example('$0 200', `Gives information about status code 200.`)
-		.example('$0 Ok', `Gives information about the HTTP status with message OK.`)
-		.example('$0 not found', `Gives information about the HTTP status with message 'Not Found'.`)
+Usage: statuscodes <value> [options]`)
+		.example('statuscodes 200', `Gives information about status code 200.`)
+		.example('statuscodes Ok', `Gives information about the HTTP status with message OK.`)
+		.example('statuscodes not found', `Gives information about the HTTP status with message 'Not Found'.`)
 		.demandCommand(1)
 		.alias('?', 'help')
 		.help('?')
@@ -35,7 +35,5 @@ Status Code: ${chalk.greenBright(status.Code)}
 Textual Identifier: ${chalk.yellow(status.Text)}
 Message: ${chalk.cyan(status.Desc)}
 Class: ${chalk.yellow(Object.keys(statusClass).filter(k => statusClass[k] === status.Class)[0])}
-
-${ack}
 `);
 }
