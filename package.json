@@ -1,0 +1,36 @@
+{
+	"name": "statuscodes",
+	"version": "1.0.0",
+	"description": "A library for working with HTTP status codes.",
+	"main": "statuscodes.js",
+	"scripts": {
+		"start": "node statuscodes-cli.js",
+		"build": "concurrently npm:build-esm-wrapper npm:build-minify",
+		"build-esm-wrapper": "node build-wrapper.js",
+		"build-minify": "minify statuscodes.js > statuscodes.min.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"exports": {
+		"require": "./statuscodes.js",
+		"import": "./esm/wrapper.js"
+	},
+	"bin": {
+		"statuscodes": "./statuscodes-cli.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/paramsiddharth/statuscodes.git"
+	},
+	"keywords": [
+		"http-status",
+		"status-codes",
+		"status",
+		"http"
+	],
+	"author": "Param Siddharth <contact@paramsid.com> (http://www.paramsid.com)",
+	"license": "BSD-3-Clause",
+	"devDependencies": {
+		"concurrently": "^5.3.0",
+		"minify": "^6.0.1"
+	}
+}
