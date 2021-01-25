@@ -3,14 +3,18 @@ const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const chalk = require('chalk');
 const { StatusCode, statusClass } = require('./statuscodes');
-const ack = `Made with ❤ by Param Siddharth.`;
+const ack = chalk.greenBright(`Made with ❤ by Param Siddharth.`);
 
 if (require && require.main === module) {
 	var args = yargs(hideBin(process.argv))
 		.usage(`\
 ${chalk.yellowBright('HTTP Status Codes (statuscodes)')}
-Usage: $0 <value> [options]
-`)
+Gives details about HTTP status codes/messages.
+
+Usage: $0 <value> [options]`)
+		.example('$0 200', `Gives information about status code 200.`)
+		.example('$0 Ok', `Gives information about the HTTP status with message OK.`)
+		.example('$0 not found', `Gives information about the HTTP status with message 'Not Found'.`)
 		.demandCommand(1)
 		.alias('?', 'help')
 		.help('?')
@@ -28,9 +32,9 @@ Usage: $0 <value> [options]
 	}
 	process.stdout.write(`\
 Status Code: ${chalk.greenBright(status.Code)}
-Textual Identifier: ${chalk.yellowBright(status.Text)}
-Message: ${chalk.blueBright.bgBlack(status.Desc)}
-Class: ${chalk.yellowBright(Object.keys(statusClass).filter(k => statusClass[k] === status.Class)[0])}
+Textual Identifier: ${chalk.yellow(status.Text)}
+Message: ${chalk.cyan(status.Desc)}
+Class: ${chalk.yellow(Object.keys(statusClass).filter(k => statusClass[k] === status.Class)[0])}
 
 ${ack}
 `);
