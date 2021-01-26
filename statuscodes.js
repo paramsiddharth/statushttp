@@ -215,10 +215,9 @@ const statusDesc = Object.freeze({
 	511: 'Network Authentication Required'
 });
 
-/**
- * Used as HTTP status objects. 
- * @class
- * @constructor
+/** 
+ * Used as HTTP status objects.
+ * @class StatusCode
  * @extends String
  * */
 class StatusCode extends String {
@@ -227,32 +226,31 @@ class StatusCode extends String {
 	 * @name Code
 	 * @type Number
 	 */
-	Code = null;
+	Code() {}
 
 	/**
 	 * The uppercase textual identifier.
 	 * @name Text
 	 * @type String
 	 */
-	Text = null;
+	Text() {}
 
 	/**
 	 * The status message/description.
 	 * @name Desc
 	 * @type String
 	 */
-	Desc = null;
+	Desc() {};
 
 	/**
 	 * The status class enumeration.
 	 * @name Class
 	 * @type Number
 	 */
-	Class = null;
+	Class() {};
 
 	/**
 	 * Create a HTTP status object.
-	 * @param {(string|number)} param - A string identifier for the HTTP status, or its numeric code.
 	 */
 	constructor(param) {
 		if (typeof param === 'number') {
@@ -268,6 +266,11 @@ class StatusCode extends String {
 			super(Desc);
 
 			Object.defineProperties(this, {
+				/**
+				 * The status message/description.
+				 * @name Desc
+				 * @type String
+				 */
 				Code: {
 					get: () => Code
 				},
