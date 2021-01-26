@@ -182,7 +182,7 @@ Class: CLIENT_ERROR
   
   app.route('/*')
   .all((req, res) => {
-  	res.status(statusCode.NOT_FOUND).end(statusDesc[statusCode.  NOT_FOUND]);
+  	res.status(statusCode.NOT_FOUND).end(statusDesc[statusCode.NOT_FOUND]);
   });
   
   app.listen(5000);

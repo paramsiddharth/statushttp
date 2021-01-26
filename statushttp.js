@@ -222,34 +222,6 @@ const statusDesc = Object.freeze({
  * */
 class StatusCode extends String {
 	/**
-	 * The numeric status code.
-	 * @name Code
-	 * @type Number
-	 */
-	Code() {}
-
-	/**
-	 * The uppercase textual identifier.
-	 * @name Text
-	 * @type String
-	 */
-	Text() {}
-
-	/**
-	 * The status message/description.
-	 * @name Desc
-	 * @type String
-	 */
-	Desc() {};
-
-	/**
-	 * The status class enumeration.
-	 * @name Class
-	 * @type Number
-	 */
-	Class() {};
-
-	/**
 	 * Create a HTTP status object.
 	 */
 	constructor(param) {
@@ -266,11 +238,6 @@ class StatusCode extends String {
 			super(Desc);
 
 			Object.defineProperties(this, {
-				/**
-				 * The status message/description.
-				 * @name Desc
-				 * @type String
-				 */
 				Code: {
 					get: () => Code
 				},
@@ -315,6 +282,34 @@ class StatusCode extends String {
 			});
 		} else
 			throw new Error(`Invalid status identifier "${param}". Enter a valid string or number.`);
+
+			/**
+			 * The numeric status code.
+			 * @name Code
+			 * @type Number
+			 */
+			this.Code;
+
+			/**
+			 * The uppercase textual identifier.
+			 * @name Text
+			 * @type String
+			 */
+			this.Text;
+
+			/**
+			 * The status message/description.
+			 * @name Desc
+			 * @type String
+			 */
+			this.Desc;
+
+			/**
+			 * The status class enumeration.
+			 * @name Class
+			 * @type Number
+			 */
+			this.Class;
 	}
 }
 
@@ -325,6 +320,10 @@ const Exports = {
 	statusDesc,
 	statusText
 };
+
+if (typeof exports !== 'undefined') {
+	module.exports = Exports;
+}
 
 (function(global, factory) {
 	if (typeof define === 'function' && define.amd) {
