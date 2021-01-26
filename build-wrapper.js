@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const MODULEEXT = (process.argv[2] && path.extname(process.argv[2])) || '.js';
-const MODULE = (process.argv[2] && path.basename(process.argv[2], MODULEEXT)) || 'statuscodes';
+const MODULE = (process.argv[2] && path.basename(process.argv[2], MODULEEXT)) || 'statushttp';
 
 console.log('File:', MODULE + MODULEEXT);
 

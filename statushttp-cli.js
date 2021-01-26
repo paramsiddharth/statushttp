@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
+const LIB_NAME = 'statushttp';
+
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const chalk = require('chalk');
 const Table = require('cli-table');
-const { StatusCode, statusClass, statusText, statusDesc } = require('./statuscodes');
+const { StatusCode, statusClass, statusText, statusDesc } = require(`./${LIB_NAME}`);
 const ack = chalk.greenBright(`Made with ❤ by Param Siddharth.`);
 
 if (require && require.main === module) {
@@ -12,10 +14,10 @@ if (require && require.main === module) {
 	args = yargs(hideBin(args));
 	args = args
 		.usage(`\
-${chalk.yellowBright('HTTP Status Codes (statuscodes)')}
+${chalk.yellowBright(`HTTP Status Codes (${LIB_NAME})`)}
 Gives details about HTTP status codes/messages.
 
-Usage: statuscodes <value> [options]`)
+Usage: ${LIB_NAME} <value> [options]`)
 		.check((argv, options) => {
 			if (!argv.help && !argv.version && !argv.list && argv._.length < 1)
 				throw 'Not enough non-option arguments: got 0, need at least 1';
@@ -29,9 +31,9 @@ Usage: statuscodes <value> [options]`)
 			help: true,
 			boolean: true
 		})
-		.example('statuscodes 200', `Gives information about status code 200.`)
-		.example('statuscodes Ok', `Gives information about the HTTP status with message OK.`)
-		.example('statuscodes not found', `Gives information about the HTTP status with message 'Not Found'.`)
+		.example(`${LIB_NAME} 200`, `Gives information about status code 200.`)
+		.example(`${LIB_NAME} Ok`, `Gives information about the HTTP status with message OK.`)
+		.example(`${LIB_NAME} not found`, `Gives information about the HTTP status with message 'Not Found'.`)
 		.alias('v', 'version')
 		.alias('?', 'help')
 		.help('?')

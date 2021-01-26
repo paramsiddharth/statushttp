@@ -1,4 +1,4 @@
-# HTTP Status Codes (`statuscodes`)
+# HTTP Status Codes (`statushttp`)
 A JavaScript library for working with HTTP status codes.
 
 All status codes are taken from the [IANA Status Code Registry](https://www.iana.org/assignments/http-status-codes).
@@ -9,26 +9,26 @@ The library works both in the front-end (VanillaJS) and the back-end (NodeJS), s
 Install it via NPM.
 ``` bash
 # Local
-npm i statuscodes
+npm i statushttp
 
 # Global
-npm i -g statuscodes
+npm i -g statushttp
 ```
 
 ## Importing
 - CommonJS
   ``` js
-  const { statusCode, statusText, ... } = require('statuscodes');
+  const { statusCode, statusText, ... } = require('statushttp');
   ```
 - ES6
   ``` mjs
-  import { statusCode, statusText, ... } from 'statuscodes';
+  import { statusCode, statusText, ... } from 'statushttp';
   ```
 - AMD (require.js)
   ``` js
   require(['main.js'], () => {
-    // Assuming path for 'statuscodes' configured at 'node_modules/statuscodes/statuscodes' inside main.js
-  	require(['statuscodes'], ({
+    // Assuming path for 'statushttp' configured at 'node_modules/statushttp/statushttp' inside main.js
+  	require(['statushttp'], ({
   		statusCode,
   		statusText,
   		...
@@ -37,15 +37,13 @@ npm i -g statuscodes
   	});
   });
   ```
-
-
 - HTML + VanillaJS
   ``` html
   <!-- Minified -->
-  <script src='node_modules/statuscodes/statuscodes.min.js'></script>
+  <script src='node_modules/statushttp/statushttp.min.js'></script>
 
   <!-- Not minified -->
-  <script src='node_modules/statuscodes/statuscodes.js'></script>
+  <script src='node_modules/statushttp/statushttp.js'></script>
 
   <script>
 		// statusText, statusCode, et cetera, are accessible now.
@@ -53,7 +51,7 @@ npm i -g statuscodes
   ```
 
 ## Usage (JavaScript)
-The following objects are accessible from `statuscodes`:
+The following objects are accessible from `statushttp`:
 - `statusCode`
    : Textual identifiers mapped to numeric codes.
 - `statusText`
@@ -106,11 +104,11 @@ Examples:
   ```
 
 ## Usage (Command-Line)
-`statuscodes` can directly be used from the command-line if installed globally. Alterntively, in a project-specific installation, it may be executed using `npx`.
+`statushttp` can directly be used from the command-line if installed globally. Alterntively, in a project-specific installation, it may be executed using `npx`.
 
 ``` bash
-statuscodes <value> [options] # Global installation
-npx statuscodes <value> [options] # Local installation
+statushttp <value> [options] # Global installation
+npx statushttp <value> [options] # Local installation
 ```
 
 The `value` here may be a number representing the status code, or the status text (case-insensitive, with or without the hyphens and parentheses).
@@ -126,35 +124,35 @@ Options:
 
 Examples:
 ``` bash
-> statuscodes ok
+> statushttp ok
 
 Status Code: 200
 Textual Identifier: OK
 Message: OK
 Class: SUCCESS
 
-> statuscodes 304
+> statushttp 304
 
 Status Code: 304
 Textual Identifier: NOT_MODIFIED
 Message: Not Modified
 Class: REDIRECTIONAL
 
-> statuscodes temporary redirect
+> statushttp temporary redirect
 
 Status Code: 307
 Textual Identifier: TEMPORARY_REDIRECT
 Message: Temporary Redirect
 Class: REDIRECTIONAL
 
-> statuscodes 'not found'
+> statushttp 'not found'
 
 Status Code: 404
 Textual Identifier: NOT_FOUND
 Message: Not Found
 Class: CLIENT_ERROR
 
-> statuscodes --list
+> statushttp --list
 
 ┌──────┬─────────────────────────────────┐
 │ Code │ Message                         │
@@ -176,7 +174,7 @@ Class: CLIENT_ERROR
   ``` js
   const express = require('express');
   const cors = require('cors');
-  const { statusCode, statusDesc } = require('statuscodes');
+  const { statusCode, statusDesc } = require('statushttp');
   
   const app = express();
   
@@ -193,7 +191,7 @@ Class: CLIENT_ERROR
   ``` jsx
   import react, { useState } from 'react';
   import axios from 'axios';
-  import { StatusCode } from 'statuscodes';
+  import { StatusCode } from 'statushttp';
   
   const App = () => {
     const [resp, setResp] = useState(null);
