@@ -35,6 +35,7 @@
 	},
 	"dependencies": {
 		"chalk": "^4.1.0",
+		"cli-table": "^0.3.4",
 		"yargs": "^16.2.0"
 	}
 }
