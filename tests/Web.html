@@ -1,0 +1,35 @@
+<input type='text' id='param' /><br/>
+<div id='output'></div>
+<script src='../statushttp.min.js'></script>
+<script>
+	let status;
+	try {
+		status = sc(Number(process.argv[2]) || process.argv[2] || 200);
+	} catch(e) {
+		status = sc(200);
+	}
+
+	document.querySelector('#output').innerHTML = (`\
+	STATUS<br/>
+	Code: ${status.Code}<br/>
+	Text: ${status.Text}<br/>
+	Description: ${status.Desc}<br/>
+	Class: ${status.Class}<br/>
+	`);
+
+	document.querySelector('#param').oninput = e => {
+		try {
+			status = sc(Number(e.target.value) || e.target.value || 200);
+		} catch(e) {
+			status = sc(200);
+		}
+		
+		document.querySelector('#output').innerHTML = `\
+		STATUS<br/>
+		Code: ${status.Code}<br/>
+		Text: ${status.Text}<br/>
+		Description: ${status.Desc}<br/>
+		Class: ${status.Class}<br/>
+		`;
+	};
+</script>

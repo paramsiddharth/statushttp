@@ -62,6 +62,8 @@ The following objects are accessible from `statushttp`:
    : Enumerations for status classes.
 - `StatusCode`
    : A class implementation for status codes to provide ease in working with status codes.
+- `sc`
+   : An alias for the `StatusCode` class constructor.
 
 Examples:
 ``` js
@@ -81,9 +83,10 @@ The constructor receives one parameter, which may be a number representing the s
 
 Examples:
 ``` js
-const successStatus = new StatusCode(200);
-const createdStatus = new StatusCode('created');
-const continueStatus = new StatusCode('ConTinUe');
+let   successStatus = new StatusCode(200);
+      successStatus = sc(200); // Using the alias
+const createdStatus = sc('created');
+const continueStatus = sc('ConTinUe');
 ```
 
 #### Object Properties
@@ -191,7 +194,7 @@ Class: CLIENT_ERROR
   ``` jsx
   import react, { useState } from 'react';
   import axios from 'axios';
-  import { StatusCode } from 'statushttp';
+  import { sc } from 'statushttp';
   
   const App = () => {
     const [resp, setResp] = useState(null);
@@ -202,10 +205,48 @@ Class: CLIENT_ERROR
         .catch(e => setResp(e.response));
     }
   
-    return <h1>{new StatusCode(resp?.status || 200)}</h1>;
+    return <h1>{sc(resp?.status || 200)}</h1>;
   };
   
   export default App;
   ```
+
+## Development
+- Clone the Git repository.
+  ``` bash
+  git clone https://github.com/paramsiddharth/statushttp.git
+  ```
+- Install the dependencies.
+  ``` bash
+  cd statushttp
+  npm ci
+  ```
+- Install the development code as a global module.
+  ``` bash
+  npm i -g .
+  ```
+- Build the ESM wrapper and the minified form of the development code.
+  ``` bash
+  npm run build
+  ```
+- Test the library.
+  ``` bash
+  npm test
+  ```
+  Test with your own values.
+  ``` bash
+  cd tests
+  node test 'service unavailable'
+  ```
+  Test the minified web version by running `tests/Web.html`.
+
+## Contribution
+Contributions are welcome via [GitHub](https://github.com/paramsiddharth/statushttp).
+- Raise issues via GitHub.
+- Fork the repository.
+- Clone the fork.
+- Setup the development environment as described above.
+- Commit and push changes to the forked repository.
+- Create a pull request.
 
 # Made with ❤ by [Param](http://www.paramsid.com).
