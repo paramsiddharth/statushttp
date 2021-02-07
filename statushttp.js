@@ -313,12 +313,20 @@ class StatusCode extends String {
 	}
 }
 
+/**
+ * Alias for the StatusCode object constructor.
+ * @name sc
+ * @param {string | number} param
+ */
+const sc = param => new StatusCode(param);
+
 const Exports = {
 	StatusCode,
 	statusClass,
 	statusCode,
 	statusDesc,
-	statusText
+	statusText,
+	sc
 };
 
 if (typeof exports !== 'undefined') {

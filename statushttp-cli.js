@@ -6,7 +6,7 @@ const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const chalk = require('chalk');
 const Table = require('cli-table');
-const { StatusCode, statusClass, statusText, statusDesc } = require(`./${LIB_NAME}`);
+const { sc, statusClass, statusText, statusDesc } = require(`./${LIB_NAME}`);
 const ack = chalk.greenBright(`Made with ❤ by Param Siddharth.`);
 
 if (require && require.main === module) {
@@ -61,7 +61,7 @@ Usage: ${LIB_NAME} <value> [options]`)
 		value = args._.join(' ');
 	let status = null;
 	try {
-		status = new StatusCode(value);
+		status = sc(value);
 	} catch(e) {
 		process.stderr.write(`${chalk.redBright(e.message)}\n`);
 		process.exit(1);
