@@ -20,7 +20,7 @@ npm i -g statushttp
 const { sc } = require('statushttp');
 // Or import { sc } from 'statushttp'; for modules
 
-// Psssing case-insensitive text with spaces
+// Passing case-insensitive text with spaces
 console.log(sc('not found').Code); // 404
 console.log(sc(201).Desc); // "Created"
 
