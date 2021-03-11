@@ -64,6 +64,9 @@ console.log(sc(405).Text); // "METHOD_NOT_ALLOWED"
   ```
 
 ## List of Identifiers Used
+The following identifiers are used in `statushttp` to identify
+various HTTP statuses.
+
 | Identifier                                | Code |
 | ------------------------------------------ | --- |
 | CONTINUE                                 | 100 |
