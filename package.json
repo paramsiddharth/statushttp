@@ -8,7 +8,9 @@
 		"build": "concurrently npm:build-esm-wrapper npm:build-minify",
 		"build-esm-wrapper": "node build-wrapper.js",
 		"build-minify": "minify statushttp.js > statushttp.min.js",
-		"test": "cd tests && node test"
+		"test": "cd tests && node test",
+		"postinstall": "npm run build",
+		"prepack": "npm run build"
 	},
 	"exports": {
 		"require": "./statushttp.js",
